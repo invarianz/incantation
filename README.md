@@ -13,9 +13,12 @@
   <a href="https://github.com/invarianz/incantation/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg" alt="License: GPL-3.0-or-later"></a>
   <img src="https://img.shields.io/badge/platform-elementary%20OS%208-64BAFF.svg" alt="Platform: elementary OS 8">
   <img src="https://img.shields.io/badge/GTK-4-4A86CF.svg" alt="GTK 4">
+  <img src="https://img.shields.io/badge/status-pre--alpha-orange.svg" alt="Status: pre-alpha">
 </p>
 
 ---
+
+> **Note:** Incantation is in early pre-alpha development. Nothing is usable yet — expect missing features, breaking changes, and rough edges.
 
 Master programming through daily ritual, spaced repetition, and the slow accumulation of arcane power. Every spell you learn is a real coding concept you can use.
 
