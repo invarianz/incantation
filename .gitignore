@@ -1,0 +1,64 @@
+# Elementary OS / Vala build artifacts
+build/
+builddir/
+_build/
+*.o
+*.so
+*.a
+*.la
+*.lo
+*.pc
+
+# Meson
+subprojects/
+meson-private/
+meson-info/
+meson-logs/
+
+# Vala
+*.c
+!src/**/*.c
+*.vapi
+*.gir
+*.typelib
+
+# Autotools (if used)
+autom4te.cache/
+aclocal.m4
+compile
+config.guess
+config.h
+config.h.in
+config.log
+config.status
+config.sub
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+missing
+stamp-h1
+Makefile
+Makefile.in
+
+# Flatpak
+.flatpak-builder/
+*.flatpak
+repo/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.directory
+
+# OS files
+.DS_Store
+Thumbs.db
+
+DESIGN.md
+DEVELOPMENT.md
+CLAUDE.md
