@@ -5,6 +5,9 @@
 
 public class Incantation.MainWindow : Gtk.ApplicationWindow {
     private Settings settings;
+    private Incantation.Sidebar sidebar;
+    private Gtk.Stack content_stack;
+    private Gtk.Paned paned;
 
     public MainWindow (Gtk.Application application) {
         Object (
@@ -26,20 +29,52 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
         var header_bar = new Gtk.HeaderBar () {
             show_title_buttons = true
         };
-
         titlebar = header_bar;
 
-        var placeholder = new Granite.Placeholder (_("Welcome, Initiate")) {
-            description = _("Your journey into the arcane arts begins here."),
-            icon = new ThemedIcon ("applications-development")
+        sidebar = new Incantation.Sidebar (settings);
+
+        content_stack = new Gtk.Stack () {
+            transition_type = Gtk.StackTransitionType.CROSSFADE
+        };
+        content_stack.add_named (new Incantation.HomeView (settings), "home");
+        content_stack.add_named (new Incantation.TowerView (), "tower");
+        content_stack.add_named (new Incantation.GrimoireView (), "grimoire");
+        content_stack.add_named (new Incantation.ProfileView (), "profile");
+
+        paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            resize_start_child = false,
+            shrink_start_child = false,
+            start_child = sidebar,
+            end_child = content_stack,
+            position = 220
         };
 
-        child = placeholder;
+        var toast = new Granite.Toast ("");
+
+        var overlay = new Gtk.Overlay () {
+            child = paned
+        };
+        overlay.add_overlay (toast);
+
+        child = overlay;
+
+        sidebar.navigation_changed.connect ((view_name) => {
+            content_stack.visible_child_name = view_name;
+        });
+
+        sidebar.select_view ("home");
 
         close_request.connect (() => {
             save_window_state ();
             return false;
         });
+    }
+
+    public void set_sidebar_visible (bool visible) {
+        sidebar.visible = visible;
+        if (visible) {
+            paned.position = 220;
+        }
     }
 
     private void save_window_state () {

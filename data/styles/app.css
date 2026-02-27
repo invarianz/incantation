@@ -1,1 +1,23 @@
 /* Incantation custom styles */
+
+.sidebar {
+    background-color: alpha(@bg_color, 0.95);
+}
+
+.flame-icon {
+    font-size: 32px;
+}
+
+.flame-count {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.continue-button {
+    padding: 12px 32px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+}

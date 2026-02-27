@@ -20,22 +20,23 @@ granite_dep = dependency('granite-7')
 glib_dep = dependency('glib-2.0')
 gobject_dep = dependency('gobject-2.0')
 gio_dep = dependency('gio-2.0')
-json_glib_dep = dependency('json-glib-1.0')
-sqlite3_dep = dependency('sqlite3')
-
 dependencies = [
     gtk_dep,
     granite_dep,
     glib_dep,
     gobject_dep,
     gio_dep,
-    json_glib_dep,
-    sqlite3_dep,
 ]
 
 sources = files(
     'src/Application.vala',
     'src/MainWindow.vala',
+    'src/Views/HomeView.vala',
+    'src/Views/TowerView.vala',
+    'src/Views/GrimoireView.vala',
+    'src/Views/ProfileView.vala',
+    'src/Widgets/FlameDisplay.vala',
+    'src/Widgets/Sidebar.vala',
 )
 
 executable(

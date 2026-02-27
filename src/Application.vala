@@ -28,7 +28,7 @@ public class Incantation.Application : Gtk.Application {
         });
 
         var css_provider = new Gtk.CssProvider ();
-        css_provider.load_from_resource ("/io/github/invarianz/incantation/app.css");
+        css_provider.load_from_resource ("/io/github/invarianz/incantation/styles/app.css");
         Gtk.StyleContext.add_provider_for_display ( // vala-lint=line-length
             Gdk.Display.get_default (),
             css_provider,

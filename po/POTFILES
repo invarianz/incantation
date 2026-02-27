@@ -1,4 +1,10 @@
 src/Application.vala
 src/MainWindow.vala
+src/Views/HomeView.vala
+src/Views/TowerView.vala
+src/Views/GrimoireView.vala
+src/Views/ProfileView.vala
+src/Widgets/FlameDisplay.vala
+src/Widgets/Sidebar.vala
 data/io.github.invarianz.incantation.desktop.in
 data/io.github.invarianz.incantation.metainfo.xml.in
