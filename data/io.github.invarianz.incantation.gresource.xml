@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/invarianz/incantation">
-    <file preprocess="xml-stripblanks">styles/app.css</file>
+    <file>styles/app.css</file>
   </gresource>
 </gresources>
