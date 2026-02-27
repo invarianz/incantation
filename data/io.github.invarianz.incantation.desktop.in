@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Incantation
+Comment=Learn to code the way wizards learn to cast
+Categories=Education;Development;
+Exec=io.github.invarianz.incantation
+Icon=io.github.invarianz.incantation
+Terminal=false
+Type=Application
+Keywords=programming;learn;code;vala;education;wizard;

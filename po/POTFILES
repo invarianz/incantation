@@ -1,0 +1,4 @@
+src/Application.vala
+src/MainWindow.vala
+data/io.github.invarianz.incantation.desktop.in
+data/io.github.invarianz.incantation.metainfo.xml.in

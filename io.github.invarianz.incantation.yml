@@ -1,0 +1,17 @@
+app-id: io.github.invarianz.incantation
+runtime: io.elementary.Platform
+runtime-version: '8'
+sdk: io.elementary.Sdk
+command: io.github.invarianz.incantation
+finish-args:
+  - '--share=ipc'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+  - '--share=network'
+  - '--talk-name=org.freedesktop.Notifications'
+modules:
+  - name: incantation
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .

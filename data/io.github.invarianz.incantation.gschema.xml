@@ -1,0 +1,52 @@
+<schemalist>
+  <schema id="io.github.invarianz.incantation"
+          path="/io/github/invarianz/incantation/">
+
+    <key name="daily-oath" type="s">
+      <default>"flame"</default>
+      <summary>Daily practice oath level</summary>
+      <description>One of: ember, flame, blaze, inferno</description>
+    </key>
+
+    <key name="flame-count" type="i">
+      <default>0</default>
+      <summary>Current Eternal Flame streak</summary>
+    </key>
+
+    <key name="last-session-date" type="s">
+      <default>""</default>
+      <summary>ISO 8601 date of last completed session</summary>
+    </key>
+
+    <key name="time-wards" type="i">
+      <default>0</default>
+      <summary>Banked Time Wards (streak freezes)</summary>
+    </key>
+
+    <key name="mana-crystals" type="i">
+      <default>0</default>
+      <summary>Current Mana Crystal balance</summary>
+    </key>
+
+    <key name="notifications-enabled" type="b">
+      <default>true</default>
+      <summary>Whether notifications are enabled</summary>
+    </key>
+
+    <key name="window-width" type="i">
+      <default>900</default>
+      <summary>Window width</summary>
+    </key>
+
+    <key name="window-height" type="i">
+      <default>640</default>
+      <summary>Window height</summary>
+    </key>
+
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Whether the window is maximized</summary>
+    </key>
+
+  </schema>
+</schemalist>

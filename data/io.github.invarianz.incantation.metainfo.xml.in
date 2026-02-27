@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.invarianz.incantation</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>Incantation</name>
+  <summary>Learn to code the way wizards learn to cast</summary>
+  <description>
+    <p>
+      Master programming through daily ritual, spaced repetition, and the slow
+      accumulation of arcane power. Every spell you learn is a real coding concept
+      you can use.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Spaced repetition engine that adapts to your pace</li>
+      <li>Adaptive difficulty that keeps you in the flow</li>
+      <li>Daily streaks and progression to keep you motivated</li>
+      <li>A personal Grimoire of every concept you master</li>
+    </ul>
+  </description>
+
+  <developer id="io.github.invarianz">
+    <name>Incantation Contributors</name>
+  </developer>
+
+  <url type="homepage">https://github.com/invarianz/incantation</url>
+  <url type="bugtracker">https://github.com/invarianz/incantation/issues</url>
+
+  <content_rating type="oars-1.1" />
+
+  <provides>
+    <binary>io.github.invarianz.incantation</binary>
+  </provides>
+
+  <launchable type="desktop-id">io.github.invarianz.incantation.desktop</launchable>
+
+  <branding>
+    <color type="primary">#7239b3</color>
+  </branding>
+
+  <releases>
+    <release version="0.1.0" date="2026-02-27">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+</component>
