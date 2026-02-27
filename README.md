@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/invarianz/incantation/actions/workflows/build-test.yml"><img src="https://github.com/invarianz/incantation/actions/workflows/build-test.yml/badge.svg" alt="Build & Test"></a>
-  <a href="https://github.com/invarianz/incantation/blob/main/COPYING"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg" alt="License: GPL-3.0-or-later"></a>
+  <a href="https://github.com/invarianz/incantation/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg" alt="License: GPL-3.0-or-later"></a>
   <img src="https://img.shields.io/badge/platform-elementary%20OS%208-64BAFF.svg" alt="Platform: elementary OS 8">
   <img src="https://img.shields.io/badge/GTK-4-4A86CF.svg" alt="GTK 4">
 </p>
@@ -38,3 +38,5 @@ meson test -C build
 ## License
 
 GPL-3.0-or-later
+
+The application icon is based on [Google Noto Emoji](https://github.com/googlefonts/noto-emoji) (SIL OFL 1.1 / Apache 2.0). See [data/icons/ATTRIBUTION.md](data/icons/ATTRIBUTION.md) for details.
