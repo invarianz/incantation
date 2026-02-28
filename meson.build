@@ -2,7 +2,7 @@ project(
     'incantation',
     'vala', 'c',
     version: '0.1.0',
-    meson_version: '>= 0.56.0',
+    meson_version: '>= 0.59.0',
 )
 
 gnome = import('gnome')
@@ -28,6 +28,8 @@ dependencies = [
     gio_dep,
 ]
 
+subdir('data')
+
 sources = files(
     'src/Application.vala',
     'src/MainWindow.vala',
@@ -42,9 +44,9 @@ sources = files(
 executable(
     app_id,
     sources,
+    app_resources,
     dependencies: dependencies,
     install: true,
 )
 
-subdir('data')
 subdir('po')

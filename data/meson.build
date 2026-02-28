@@ -48,13 +48,16 @@ if compile_schemas.found()
     )
 endif
 
-# GResource bundle (CSS, icons, etc.)
-gnome.compile_resources(
+# GResource (compiled into the binary via sources in root meson.build)
+app_resources = gnome.compile_resources(
     app_id,
     app_id + '.gresource.xml',
-    gresource_bundle: true,
-    install: true,
-    install_dir: get_option('datadir') / app_id,
+    source_dir: meson.current_source_dir(),
+)
+
+# Compile GSettings schemas after install
+gnome.post_install(
+    glib_compile_schemas: true,
 )
 
 # Icons

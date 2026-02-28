@@ -28,8 +28,8 @@ public class Incantation.FlameDisplay : Gtk.Box {
         count_label.add_css_class ("flame-count");
 
         var day_label = new Gtk.Label (_("day flame"));
-        day_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
-        day_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
+        day_label.add_css_class (Granite.CssClass.DIM);
+        day_label.add_css_class (Granite.CssClass.SMALL);
 
         append (flame_icon);
         append (count_label);
