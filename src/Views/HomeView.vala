@@ -27,7 +27,7 @@ public class Incantation.HomeView : Gtk.Box {
         var continue_button = new Gtk.Button.with_label (_("Continue")) {
             halign = Gtk.Align.START
         };
-        continue_button.add_css_class (Granite.CssClass.SUGGESTED);
+        continue_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.add_css_class ("continue-button");
 
         var stats_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 16) {
@@ -78,7 +78,7 @@ public class Incantation.HomeView : Gtk.Box {
             margin_top = 16,
             margin_bottom = 16
         };
-        card.add_css_class (Granite.CssClass.CARD);
+        card.add_css_class (Granite.STYLE_CLASS_CARD);
 
         var icon_label = new Gtk.Label (icon);
 
@@ -88,8 +88,8 @@ public class Incantation.HomeView : Gtk.Box {
         value_label.add_css_class ("stat-value");
 
         var text_label = new Gtk.Label (label);
-        text_label.add_css_class (Granite.CssClass.DIM);
-        text_label.add_css_class (Granite.CssClass.SMALL);
+        text_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
+        text_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
 
         card.append (icon_label);
         card.append (value_label);
