@@ -36,10 +36,11 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
         content_stack = new Gtk.Stack () {
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
-        content_stack.add_named (new Incantation.HomeView (settings), "home");
+        var home_view = new Incantation.HomeView (settings);
+        content_stack.add_named (home_view, "home");
         content_stack.add_named (new Incantation.TowerView (), "tower");
         content_stack.add_named (new Incantation.GrimoireView (), "grimoire");
-        content_stack.add_named (new Incantation.ProfileView (), "profile");
+        content_stack.add_named (new Incantation.ProfileView (settings), "profile");
 
         paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             resize_start_child = false,
@@ -60,6 +61,10 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
 
         sidebar.navigation_changed.connect ((view_name) => {
             content_stack.visible_child_name = view_name;
+        });
+
+        home_view.navigate_to.connect ((view_name) => {
+            sidebar.select_view (view_name);
         });
 
         sidebar.select_view ("home");

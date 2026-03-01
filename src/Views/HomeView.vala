@@ -4,6 +4,8 @@
  */
 
 public class Incantation.HomeView : Gtk.Box {
+    public signal void navigate_to (string view_name);
+
     public Settings settings { get; construct; }
 
     public HomeView (Settings settings) {
@@ -47,6 +49,13 @@ public class Incantation.HomeView : Gtk.Box {
             format_oath (current_oath),
             _("Study Oath")
         );
+
+        oath_card.cursor = new Gdk.Cursor.from_name ("pointer", null);
+        var oath_gesture = new Gtk.GestureClick ();
+        oath_card.add_controller (oath_gesture);
+        oath_gesture.released.connect (() => {
+            navigate_to ("profile");
+        });
 
         stats_box.append (spells_card);
         stats_box.append (oath_card);
