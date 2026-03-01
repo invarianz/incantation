@@ -3,9 +3,9 @@
           path="/io/github/invarianz/incantation/">
 
     <key name="daily-oath" type="s">
-      <default>"flame"</default>
+      <default>"invocation"</default>
       <summary>Daily practice oath level</summary>
-      <description>One of: ember, flame, blaze, inferno</description>
+      <description>One of: cantrip, invocation, conjuration, grand-ritual</description>
     </key>
 
     <key name="flame-count" type="i">

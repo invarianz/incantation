@@ -21,13 +21,17 @@ public class Incantation.FlameDisplay : Gtk.Box {
         margin_top = 12;
         margin_bottom = 12;
 
-        var flame_icon = new Gtk.Label ("\xf0\x9f\x94\xa5");
-        flame_icon.add_css_class ("flame-icon");
+        var flame_icon = new Gtk.Image.from_resource (
+            "/io/github/invarianz/incantation/images/magic-circle.svg"
+        ) {
+            pixel_size = 48
+        };
+        flame_icon.add_css_class ("magic-circle");
 
         count_label = new Gtk.Label (settings.get_int ("flame-count").to_string ());
         count_label.add_css_class ("flame-count");
 
-        var day_label = new Gtk.Label (_("day flame"));
+        var day_label = new Gtk.Label (_("Daily Incantations"));
         day_label.add_css_class (Granite.CssClass.DIM);
         day_label.add_css_class (Granite.CssClass.SMALL);
 

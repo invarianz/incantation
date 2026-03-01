@@ -15,14 +15,15 @@ public class Incantation.HomeView : Gtk.Box {
     }
 
     construct {
-        margin_start = 32;
-        margin_end = 32;
+        margin_start = 24;
+        margin_end = 24;
         margin_top = 24;
         margin_bottom = 24;
 
-        var welcome_label = new Granite.HeaderLabel (_("Welcome, Initiate")) {
-            secondary_text = _("Your journey into the arcane arts begins here.")
+        var welcome_label = new Granite.HeaderLabel (_("Welcome Initiate")) {
+            secondary_text = _("Your journey into the arcane arts of programming begins here.")
         };
+        welcome_label.add_css_class ("welcome-header");
 
         var continue_button = new Gtk.Button.with_label (_("Continue")) {
             halign = Gtk.Align.START
@@ -30,15 +31,9 @@ public class Incantation.HomeView : Gtk.Box {
         continue_button.add_css_class (Granite.CssClass.SUGGESTED);
         continue_button.add_css_class ("continue-button");
 
-        var stats_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 16) {
+        var stats_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
             homogeneous = true
         };
-
-        var flame_card = create_stat_card (
-            "\xf0\x9f\x94\xa5",
-            settings.get_int ("flame-count").to_string (),
-            _("Day Flame")
-        );
 
         var spells_card = create_stat_card (
             "\xe2\x9c\xa8",
@@ -46,14 +41,13 @@ public class Incantation.HomeView : Gtk.Box {
             _("Fading Spells")
         );
 
-        var oath_value = format_oath (settings.get_string ("daily-oath"));
+        var current_oath = settings.get_string ("daily-oath");
         var oath_card = create_stat_card (
-            "\xf0\x9f\x93\x9c",
-            oath_value,
-            _("Daily Oath")
+            oath_emoji (current_oath),
+            format_oath (current_oath),
+            _("Study Oath")
         );
 
-        stats_box.append (flame_card);
         stats_box.append (spells_card);
         stats_box.append (oath_card);
 
@@ -61,26 +55,22 @@ public class Incantation.HomeView : Gtk.Box {
         append (continue_button);
         append (stats_box);
 
-        settings.changed["flame-count"].connect (() => {
-            update_stat_value (flame_card, settings.get_int ("flame-count").to_string ());
-        });
-
         settings.changed["daily-oath"].connect (() => {
-            update_stat_value (oath_card, format_oath (settings.get_string ("daily-oath")));
+            var oath = settings.get_string ("daily-oath");
+            update_stat_icon (oath_card, oath_emoji (oath));
+            update_stat_value (oath_card, format_oath (oath));
         });
     }
 
     private Gtk.Box create_stat_card (string icon, string value, string label) {
-        var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 4) {
-            halign = Gtk.Align.FILL,
-            margin_start = 16,
-            margin_end = 16,
-            margin_top = 16,
-            margin_bottom = 16
+        var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 8) {
+            halign = Gtk.Align.FILL
         };
         card.add_css_class (Granite.CssClass.CARD);
+        card.add_css_class ("stat-card");
 
         var icon_label = new Gtk.Label (icon);
+        icon_label.add_css_class ("stat-icon");
 
         var value_label = new Gtk.Label (value) {
             name = "stat-value"
@@ -109,12 +99,29 @@ public class Incantation.HomeView : Gtk.Box {
         }
     }
 
+    private string oath_emoji (string oath) {
+        switch (oath) {
+            case "cantrip": return "\xe2\x9c\xa8";
+            case "invocation": return "\xf0\x9f\x94\xae";
+            case "conjuration": return "\xf0\x9f\x8c\x80";
+            case "grand-ritual": return "\xf0\x9f\x8c\x9f";
+            default: return "\xf0\x9f\x94\xae";
+        }
+    }
+
+    private void update_stat_icon (Gtk.Box card, string emoji) {
+        var child = card.get_first_child ();
+        if (child != null && child is Gtk.Label) {
+            ((Gtk.Label) child).label = emoji;
+        }
+    }
+
     private string format_oath (string oath) {
         switch (oath) {
-            case "ember": return _("Ember");
-            case "flame": return _("Flame");
-            case "blaze": return _("Blaze");
-            case "inferno": return _("Inferno");
+            case "cantrip": return _("Cantrip");
+            case "invocation": return _("Invocation");
+            case "conjuration": return _("Conjuration");
+            case "grand-ritual": return _("Grand Ritual");
             default: return oath;
         }
     }

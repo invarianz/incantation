@@ -4,8 +4,12 @@
     background-color: alpha(@bg_color, 0.95);
 }
 
-.flame-icon {
-    font-size: 32px;
+.magic-circle {
+    color: #D4A017;
+}
+
+.welcome-header {
+    font-size: 1.5em;
 }
 
 .flame-count {
@@ -14,10 +18,18 @@
 }
 
 .continue-button {
-    padding: 12px 32px;
+    padding: 12px 30px;
+}
+
+.stat-card {
+    padding: 24px;
+}
+
+.stat-icon {
+    font-size: 32px;
 }
 
 .stat-value {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
 }
