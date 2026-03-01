@@ -75,13 +75,6 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
         });
     }
 
-    public void set_sidebar_visible (bool visible) {
-        sidebar.visible = visible;
-        if (visible) {
-            paned.position = 220;
-        }
-    }
-
     private void save_window_state () {
         settings.set_boolean ("window-maximized", maximized);
 

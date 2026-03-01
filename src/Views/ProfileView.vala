@@ -31,7 +31,6 @@ public class Incantation.ProfileView : Gtk.Box {
         var oath_list = new Gtk.ListBox () {
             selection_mode = Gtk.SelectionMode.NONE
         };
-        oath_list.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
         oath_list.add_css_class (Granite.CssClass.CARD);
 
         Gtk.CheckButton? group = null;
