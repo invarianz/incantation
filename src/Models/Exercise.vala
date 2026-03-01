@@ -7,6 +7,7 @@ public abstract class Incantation.Exercise : Object {
     // Identity
     public string id;
     public ExerciseType exercise_type;
+    public string language;
 
     // Content
     public string prompt;

@@ -7,8 +7,6 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
     private Settings settings;
     private Incantation.Sidebar sidebar;
     private Gtk.Stack content_stack;
-    private Gtk.Paned paned;
-
     public MainWindow (Gtk.Application application) {
         Object (
             application: application,
@@ -42,7 +40,7 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
         content_stack.add_named (new Incantation.GrimoireView (), "grimoire");
         content_stack.add_named (new Incantation.ProfileView (settings), "profile");
 
-        paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             resize_start_child = false,
             shrink_start_child = false,
             start_child = sidebar,
@@ -50,14 +48,7 @@ public class Incantation.MainWindow : Gtk.ApplicationWindow {
             position = 220
         };
 
-        var toast = new Granite.Toast ("");
-
-        var overlay = new Gtk.Overlay () {
-            child = paned
-        };
-        overlay.add_overlay (toast);
-
-        child = overlay;
+        child = paned;
 
         sidebar.navigation_changed.connect ((view_name) => {
             content_stack.visible_child_name = view_name;

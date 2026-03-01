@@ -38,25 +38,25 @@ public class Incantation.ProfileView : Gtk.Box {
 
         group = add_oath_row (
             oath_list, group, "cantrip",
-            "\xe2\x9c\xa8 " + _("Cantrip"),
+            OathTier.emoji ("cantrip") + " " + OathTier.label ("cantrip"),
             _("5 minutes \xe2\x80\x94 A brief daily practice"),
             current
         );
         add_oath_row (
             oath_list, group, "invocation",
-            "\xf0\x9f\x94\xae " + _("Invocation"),
+            OathTier.emoji ("invocation") + " " + OathTier.label ("invocation"),
             _("10 minutes \xe2\x80\x94 A focused study session"),
             current
         );
         add_oath_row (
             oath_list, group, "conjuration",
-            "\xf0\x9f\x8c\x80 " + _("Conjuration"),
+            OathTier.emoji ("conjuration") + " " + OathTier.label ("conjuration"),
             _("15 minutes \xe2\x80\x94 Deep immersion in the craft"),
             current
         );
         add_oath_row (
             oath_list, group, "grand-ritual",
-            "\xf0\x9f\x8c\x9f " + _("Grand Ritual"),
+            OathTier.emoji ("grand-ritual") + " " + OathTier.label ("grand-ritual"),
             _("20 minutes \xe2\x80\x94 Total dedication to mastery"),
             current
         );
@@ -75,14 +75,10 @@ public class Incantation.ProfileView : Gtk.Box {
         string current
     ) {
         var radio = new Gtk.CheckButton () {
-            valign = Gtk.Align.CENTER
+            valign = Gtk.Align.CENTER,
+            group = group,
+            active = key == current
         };
-        if (group != null) {
-            radio.group = group;
-        }
-        if (key == current) {
-            radio.active = true;
-        }
 
         var title_label = new Gtk.Label (title) {
             xalign = 0
@@ -113,7 +109,6 @@ public class Incantation.ProfileView : Gtk.Box {
             }
         });
 
-        // Clicking anywhere on the row activates the radio
         var gesture = new Gtk.GestureClick ();
         row.add_controller (gesture);
         gesture.released.connect (() => {

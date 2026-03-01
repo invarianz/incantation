@@ -2,8 +2,13 @@
   <schema id="io.github.invarianz.incantation"
           path="/io/github/invarianz/incantation/">
 
+    <key name="current-language" type="s">
+      <default>'vala'</default>
+      <summary>Active language track</summary>
+    </key>
+
     <key name="daily-oath" type="s">
-      <default>"invocation"</default>
+      <default>'invocation'</default>
       <summary>Daily practice oath level</summary>
       <description>One of: cantrip, invocation, conjuration, grand-ritual</description>
     </key>
@@ -14,7 +19,7 @@
     </key>
 
     <key name="last-session-date" type="s">
-      <default>""</default>
+      <default>''</default>
       <summary>ISO 8601 date of last completed session</summary>
     </key>
 
