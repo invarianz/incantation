@@ -59,7 +59,10 @@ repo/
 .DS_Store
 Thumbs.db
 
+docs/
+
 DESIGN.md
 DEVELOPMENT.md
 RESEARCH.md
+TAXONOMY.md
 CLAUDE.md
