@@ -5,5 +5,4 @@
 
 public class Incantation.MultipleChoiceExercise : Incantation.Exercise {
     public GenericArray<Incantation.Option> options;
-    public string[]? contrast_concepts;
 }

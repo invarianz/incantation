@@ -1,0 +1,8 @@
+/*
+ * Copyright 2026 Incantation Contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+namespace Incantation.Config {
+    public const string CONTENT_DIR = @CONTENT_DIR@;
+}

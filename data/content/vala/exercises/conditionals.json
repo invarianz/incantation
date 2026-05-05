@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "concept_id": "conditionals",
+  "exercises": [
+    {
+      "id": "vala-mc-004",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 2,
+      "prompt": "What value does `result` hold after this code runs?",
+      "code_snippet": "var mana = 5;\nstring result;\nif (mana >= 10) {\n    result = \"Full power\";\n} else {\n    result = \"Low mana\";\n}",
+      "explanation": "Since `mana` is 5, which is less than 10, the `else` branch executes.",
+      "concepts": ["conditionals"],
+      "misconceptions": ["confuse-gte-gt"],
+      "hints": ["Check: is 5 >= 10?"],
+      "ap_base": 10,
+      "options": [
+        { "id": "o4a", "text": "\"Low mana\"", "is_correct": true, "feedback": "Correct! 5 is not >= 10, so the else branch runs.", "misconception_id": null },
+        { "id": "o4b", "text": "\"Full power\"", "is_correct": false, "feedback": "Not quite! 5 is less than 10, so the condition is false and the else branch runs.", "misconception_id": "confuse-gte-gt" },
+        { "id": "o4c", "text": "null", "is_correct": false, "feedback": "Almost! `result` is always assigned \u2014 one of the branches must execute.", "misconception_id": null },
+        { "id": "o4d", "text": "A compilation error", "is_correct": false, "feedback": "Not quite! This is valid Vala \u2014 the compiler sees that both branches assign `result`.", "misconception_id": null }
+      ]
+    }
+  ]
+}

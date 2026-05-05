@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "concept_id": "variables",
+  "exercises": [
+    {
+      "id": "vala-mc-001",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 1,
+      "prompt": "Which keyword declares a local variable in Vala?",
+      "code_snippet": null,
+      "explanation": "In Vala, `var` declares a local variable with type inference, while explicit types like `string` or `int` can also be used.",
+      "concepts": ["variables"],
+      "misconceptions": ["confuse-let-var"],
+      "hints": ["It's the same keyword used in many C-family languages for type inference."],
+      "ap_base": 10,
+      "options": [
+        { "id": "o1a", "text": "var", "is_correct": true, "feedback": "Correct! `var` enables type inference for local variables.", "misconception_id": null },
+        { "id": "o1b", "text": "let", "is_correct": false, "feedback": "Not quite! `let` is used in JavaScript and Swift, but Vala uses `var`.", "misconception_id": "confuse-let-var" },
+        { "id": "o1c", "text": "dim", "is_correct": false, "feedback": "Almost! `dim` is from BASIC-family languages. Vala uses `var`.", "misconception_id": null },
+        { "id": "o1d", "text": "auto", "is_correct": false, "feedback": "Not quite! `auto` is used in C++. Vala uses `var` for type inference.", "misconception_id": null }
+      ]
+    }
+  ]
+}

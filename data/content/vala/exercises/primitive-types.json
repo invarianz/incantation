@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "concept_id": "primitive-types",
+  "exercises": [
+    {
+      "id": "vala-mc-002",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 1,
+      "prompt": "What is the type of the variable `name` in this code?",
+      "code_snippet": "var name = \"Gandalf\";",
+      "explanation": "String literals enclosed in double quotes produce a `string` type in Vala.",
+      "concepts": ["primitive-types"],
+      "misconceptions": ["confuse-char-string"],
+      "hints": ["Look at the value assigned \u2014 what kind of literal is it?"],
+      "ap_base": 10,
+      "options": [
+        { "id": "o2a", "text": "string", "is_correct": true, "feedback": "Correct! Double-quoted text is a `string` in Vala.", "misconception_id": null },
+        { "id": "o2b", "text": "char", "is_correct": false, "feedback": "Not quite! `char` holds a single character. Double-quoted text is a `string`.", "misconception_id": "confuse-char-string" },
+        { "id": "o2c", "text": "int", "is_correct": false, "feedback": "Almost! `int` is for whole numbers, not text.", "misconception_id": null },
+        { "id": "o2d", "text": "object", "is_correct": false, "feedback": "Not quite! While strings are objects, the inferred type is specifically `string`.", "misconception_id": null }
+      ]
+    },
+    {
+      "id": "vala-mc-003",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 2,
+      "prompt": "What does this code print?",
+      "code_snippet": "var spell = \"Fireball\";\nprint (@\"Casting $spell!\");",
+      "explanation": "The `@` prefix enables string templates in Vala. `$spell` is replaced with the variable's value.",
+      "concepts": ["primitive-types"],
+      "misconceptions": ["forget-at-prefix"],
+      "hints": ["The @ symbol before the string enables template mode."],
+      "ap_base": 10,
+      "options": [
+        { "id": "o3a", "text": "Casting Fireball!", "is_correct": true, "feedback": "Correct! The `@` prefix makes `$spell` expand to its value.", "misconception_id": null },
+        { "id": "o3b", "text": "Casting $spell!", "is_correct": false, "feedback": "Not quite! That would happen without the `@` prefix. With `@`, variables are interpolated.", "misconception_id": "forget-at-prefix" },
+        { "id": "o3c", "text": "Casting spell!", "is_correct": false, "feedback": "Almost! The `$` tells Vala to use the variable's value, not its name.", "misconception_id": null },
+        { "id": "o3d", "text": "A compilation error", "is_correct": false, "feedback": "Not quite! This is valid Vala syntax \u2014 string templates with `@` work great.", "misconception_id": null }
+      ]
+    }
+  ]
+}

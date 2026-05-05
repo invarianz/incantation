@@ -9,4 +9,12 @@ public class Incantation.Language : Object {
     public string icon_name;
     public string description;
     public bool is_available;
+
+    // Tower visual identity
+    public string roof_color_top;
+    public string roof_color_bottom;
+    public string logo_path;
+    public double logo_center_x;
+    public double logo_center_y;
+    public double logo_scale;
 }

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "concept_id": "functions",
+  "exercises": [
+    {
+      "id": "vala-mc-007",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 2,
+      "prompt": "What does this method return?",
+      "code_snippet": "int add_mana (int current, int bonus) {\n    return current + bonus;\n}\n\nvar total = add_mana (7, 3);",
+      "explanation": "The method adds its two parameters and returns the sum: 7 + 3 = 10.",
+      "concepts": ["functions"],
+      "misconceptions": ["confuse-params-order"],
+      "hints": ["Substitute the arguments into the parameters: current=7, bonus=3."],
+      "ap_base": 10,
+      "options": [
+        { "id": "o7a", "text": "10", "is_correct": true, "feedback": "Correct! 7 + 3 = 10.", "misconception_id": null },
+        { "id": "o7b", "text": "73", "is_correct": false, "feedback": "Not quite! The `+` operator adds integers, it doesn't concatenate them.", "misconception_id": null },
+        { "id": "o7c", "text": "void", "is_correct": false, "feedback": "Almost! The return type is `int`, so the method returns a number.", "misconception_id": null },
+        { "id": "o7d", "text": "3", "is_correct": false, "feedback": "Not quite! The method returns `current + bonus`, not just `bonus`.", "misconception_id": null }
+      ]
+    }
+  ]
+}

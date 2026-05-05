@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "language": {
+    "id": "vala",
+    "name": "Vala",
+    "icon_name": "text-x-vala",
+    "description": "A modern language for GNOME development",
+    "tower_identity": {
+      "roof_color_top": "#c49af0",
+      "roof_color_bottom": "#6a30a8",
+      "logo_path": "M 28.137527,45.125 27.573563,21.216309 q -2.460938,0.922851 -3.845215,2.888183 -1.367188,1.965332 -1.367188,4.887695 0,0.666504 0.06836,1.09375 0.08545,0.410157 0.170898,0.666504 0.08545,0.239258 0.153809,0.375977 0.08545,0.136719 0.08545,0.239258 -0.905762,0 -1.606445,-0.170899 -0.700684,-0.187988 -1.1792,-0.581054 Q 19.592606,30.222656 19.336258,29.573242 19.097,28.923828 19.097,27.966797 q 0,-1.16211 0.495606,-2.290039 0.512695,-1.12793 1.384277,-2.136231 0.888672,-1.0083 2.067871,-1.862793 1.196289,-0.854492 2.546387,-1.469726 1.367187,-0.632324 2.836914,-0.974121 1.486816,-0.358887 2.956543,-0.358887 0.393066,0 0.717773,0.01709 0.341797,0.01709 0.683594,0.05127 l 0.307617,21.533203 7.365723,-21.430664 h 2.443847 l -9.724121,26.079102 z",
+      "logo_center_x": 31.0,
+      "logo_center_y": 32.0,
+      "logo_scale": 0.7
+    }
+  },
+  "mappings": [
+    {
+      "concept_id": "primitive-types",
+      "syntax_label": "string, int, bool, double",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-char-string"]
+    },
+    {
+      "concept_id": "compound-types",
+      "syntax_label": "type?, struct, enum",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-optional-ternary"]
+    },
+    {
+      "concept_id": "type-inference",
+      "syntax_label": "var name = val",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-dynamic-inferred"]
+    },
+    {
+      "concept_id": "generics",
+      "syntax_label": "Gee.ArrayList<Type>",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "algebraic-data-types",
+      "syntax_label": "",
+      "is_supported": false,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "boolean-logic",
+      "syntax_label": "&&, ||, !",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-and-or-precedence"]
+    },
+    {
+      "concept_id": "variables",
+      "syntax_label": "var / type name",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-let-var"]
+    },
+    {
+      "concept_id": "constants",
+      "syntax_label": "const type NAME",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-const-immutable"]
+    },
+    {
+      "concept_id": "assignment",
+      "syntax_label": "name = value",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-assign-equality"]
+    },
+    {
+      "concept_id": "scope",
+      "syntax_label": "{ } blocks",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-block-function-scope"]
+    },
+    {
+      "concept_id": "shadowing",
+      "syntax_label": "var name (inner block)",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "lifetime-ownership",
+      "syntax_label": "GObject refcount",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "conditionals",
+      "syntax_label": "if (cond) { } else { }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-gte-gt"]
+    },
+    {
+      "concept_id": "pattern-matching",
+      "syntax_label": "switch (val) { case: }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-switch-pattern"]
+    },
+    {
+      "concept_id": "loops-definite",
+      "syntax_label": "for / foreach",
+      "is_supported": true,
+      "confusion_pairs": ["loops-indefinite"],
+      "misconceptions": ["off-by-one"]
+    },
+    {
+      "concept_id": "loops-indefinite",
+      "syntax_label": "while (cond) { }",
+      "is_supported": true,
+      "confusion_pairs": ["loops-definite"],
+      "misconceptions": ["infinite-loop"]
+    },
+    {
+      "concept_id": "guards",
+      "syntax_label": "if + return/break",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "error-handling",
+      "syntax_label": "try { } catch (Error e) { }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-error-exception"]
+    },
+    {
+      "concept_id": "recursion",
+      "syntax_label": "method calls self",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["missing-base-case"]
+    },
+    {
+      "concept_id": "functions",
+      "syntax_label": "type name (params) { }",
+      "is_supported": true,
+      "confusion_pairs": ["methods"],
+      "misconceptions": ["confuse-params-order"]
+    },
+    {
+      "concept_id": "closures",
+      "syntax_label": "(params) => { }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-closure-function"]
+    },
+    {
+      "concept_id": "higher-order-functions",
+      "syntax_label": "delegates",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "partial-application",
+      "syntax_label": "",
+      "is_supported": false,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "function-composition",
+      "syntax_label": "",
+      "is_supported": false,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "methods",
+      "syntax_label": "class.method ()",
+      "is_supported": true,
+      "confusion_pairs": ["functions"],
+      "misconceptions": ["confuse-static-instance"]
+    },
+    {
+      "concept_id": "classes",
+      "syntax_label": "class Foo : Object { }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-class-instance"]
+    },
+    {
+      "concept_id": "interfaces-traits",
+      "syntax_label": "interface IFoo { }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-interface-class"]
+    },
+    {
+      "concept_id": "polymorphism",
+      "syntax_label": "virtual / override",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "inheritance",
+      "syntax_label": "class Child : Parent { }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-inherit-compose"]
+    },
+    {
+      "concept_id": "modules",
+      "syntax_label": "namespace / using",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "arrays-lists",
+      "syntax_label": "type[] / Gee.ArrayList",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["one-based-indexing"]
+    },
+    {
+      "concept_id": "maps-dictionaries",
+      "syntax_label": "Gee.HashMap<K,V>",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "sets",
+      "syntax_label": "Gee.HashSet<T>",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "strings",
+      "syntax_label": "string (GLib)",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-char-string"]
+    },
+    {
+      "concept_id": "stacks-queues",
+      "syntax_label": "Gee.ArrayQueue / Gee.LinkedList",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "trees",
+      "syntax_label": "Gee.TreeMap / custom",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "tuples-records",
+      "syntax_label": "struct",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "immutability",
+      "syntax_label": "const / unowned",
+      "is_supported": true,
+      "confusion_pairs": ["mutation"],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "mutation",
+      "syntax_label": "name = new_value",
+      "is_supported": true,
+      "confusion_pairs": ["immutability"],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "references-pointers",
+      "syntax_label": "implicit references",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-value-reference"]
+    },
+    {
+      "concept_id": "ownership-borrowing",
+      "syntax_label": "owned / unowned",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "threads",
+      "syntax_label": "GLib.Thread",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "message-passing",
+      "syntax_label": "GLib signals",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "channels",
+      "syntax_label": "GLib.AsyncQueue",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "async-await",
+      "syntax_label": "async / yield",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-async-parallel"]
+    },
+    {
+      "concept_id": "locking",
+      "syntax_label": "GLib.Mutex",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "console-io",
+      "syntax_label": "print() / stdout",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-return-print"]
+    },
+    {
+      "concept_id": "file-io",
+      "syntax_label": "FileUtils / FileStream",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "pure-functions",
+      "syntax_label": "no side effects",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "monads-effect-systems",
+      "syntax_label": "",
+      "is_supported": false,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "accumulator-pattern",
+      "syntax_label": "var sum = 0; for (...) sum += ...",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "filter-pattern",
+      "syntax_label": "if (cond) result.add()",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "map-pattern",
+      "syntax_label": "list.map() / foreach + transform",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "divide-and-conquer",
+      "syntax_label": "recursive split + merge",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "builder-pattern",
+      "syntax_label": "Object { prop = val }",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "concept_id": "iterator-pattern",
+      "syntax_label": "Gee.Iterator / foreach",
+      "is_supported": true,
+      "confusion_pairs": [],
+      "misconceptions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "concept_id": "loops-definite",
+  "exercises": [
+    {
+      "id": "vala-mc-006",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 2,
+      "prompt": "How many times does this loop print?",
+      "code_snippet": "for (int i = 0; i < 3; i++) {\n    print (\"Cast!\\n\");\n}",
+      "explanation": "The loop runs for i = 0, 1, 2 \u2014 that's 3 iterations. When i becomes 3, the condition `i < 3` is false.",
+      "concepts": ["loops-definite"],
+      "misconceptions": ["off-by-one"],
+      "hints": ["Count: i starts at 0 and runs while i < 3."],
+      "ap_base": 10,
+      "options": [
+        { "id": "o6a", "text": "3 times", "is_correct": true, "feedback": "Correct! i takes values 0, 1, 2 \u2014 three iterations.", "misconception_id": null },
+        { "id": "o6b", "text": "4 times", "is_correct": false, "feedback": "Not quite! The condition is `i < 3` (not `i <= 3`), so i = 3 is not included.", "misconception_id": "off-by-one" },
+        { "id": "o6c", "text": "2 times", "is_correct": false, "feedback": "Almost! Don't forget i = 0 counts as the first iteration.", "misconception_id": null },
+        { "id": "o6d", "text": "Infinite loop", "is_correct": false, "feedback": "Not quite! `i++` increments i each time, so it will reach 3 and stop.", "misconception_id": null }
+      ]
+    }
+  ]
+}

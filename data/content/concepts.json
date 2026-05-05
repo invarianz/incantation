@@ -1,0 +1,460 @@
+{
+  "schema_version": 1,
+  "concepts": [
+    {
+      "id": "primitive-types",
+      "name": "Primitive Types",
+      "domain": "values-types",
+      "floor": 0,
+      "prerequisites": [],
+      "confusion_pairs": ["compound-types"],
+      "misconceptions": ["confuse-char-string", "confuse-int-double"]
+    },
+    {
+      "id": "compound-types",
+      "name": "Compound Types",
+      "domain": "values-types",
+      "floor": 2,
+      "prerequisites": ["primitive-types"],
+      "confusion_pairs": ["primitive-types"],
+      "misconceptions": ["confuse-array-struct"]
+    },
+    {
+      "id": "type-inference",
+      "name": "Type Inference",
+      "domain": "values-types",
+      "prerequisites": ["compound-types"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-dynamic-inferred"]
+    },
+    {
+      "id": "generics",
+      "name": "Generics",
+      "domain": "values-types",
+      "prerequisites": ["compound-types", "functions"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-generic-any"]
+    },
+    {
+      "id": "algebraic-data-types",
+      "name": "Algebraic Data Types",
+      "domain": "values-types",
+      "prerequisites": ["compound-types", "pattern-matching"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-enum-adt"]
+    },
+    {
+      "id": "boolean-logic",
+      "name": "Boolean Logic",
+      "domain": "values-types",
+      "prerequisites": ["primitive-types"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-and-or-precedence"]
+    },
+    {
+      "id": "variables",
+      "name": "Variables",
+      "domain": "bindings-scope",
+      "floor": 1,
+      "prerequisites": ["primitive-types"],
+      "confusion_pairs": ["constants"],
+      "misconceptions": ["confuse-let-var"]
+    },
+    {
+      "id": "constants",
+      "name": "Constants",
+      "domain": "bindings-scope",
+      "prerequisites": ["variables"],
+      "confusion_pairs": ["variables"],
+      "misconceptions": ["confuse-const-immutable"]
+    },
+    {
+      "id": "assignment",
+      "name": "Assignment",
+      "domain": "bindings-scope",
+      "prerequisites": ["variables"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-assign-equality"]
+    },
+    {
+      "id": "scope",
+      "name": "Scope",
+      "domain": "bindings-scope",
+      "prerequisites": ["variables"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-block-function-scope"]
+    },
+    {
+      "id": "shadowing",
+      "name": "Shadowing",
+      "domain": "bindings-scope",
+      "prerequisites": ["scope"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-shadow-reassign"]
+    },
+    {
+      "id": "lifetime-ownership",
+      "name": "Lifetime & Ownership",
+      "domain": "bindings-scope",
+      "prerequisites": ["scope", "references-pointers"],
+      "confusion_pairs": ["ownership-borrowing"],
+      "misconceptions": []
+    },
+    {
+      "id": "conditionals",
+      "name": "Conditionals",
+      "domain": "control-flow",
+      "floor": 3,
+      "prerequisites": ["variables", "boolean-logic"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-gte-gt", "confuse-assign-equality"]
+    },
+    {
+      "id": "pattern-matching",
+      "name": "Pattern Matching",
+      "domain": "control-flow",
+      "prerequisites": ["conditionals", "compound-types"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-switch-pattern"]
+    },
+    {
+      "id": "loops-definite",
+      "name": "Definite Loops",
+      "domain": "control-flow",
+      "floor": 4,
+      "prerequisites": ["conditionals"],
+      "confusion_pairs": ["loops-indefinite"],
+      "misconceptions": ["off-by-one"]
+    },
+    {
+      "id": "loops-indefinite",
+      "name": "Indefinite Loops",
+      "domain": "control-flow",
+      "prerequisites": ["conditionals"],
+      "confusion_pairs": ["loops-definite"],
+      "misconceptions": ["infinite-loop"]
+    },
+    {
+      "id": "guards",
+      "name": "Guards",
+      "domain": "control-flow",
+      "prerequisites": ["conditionals"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "error-handling",
+      "name": "Error Handling",
+      "domain": "control-flow",
+      "prerequisites": ["conditionals", "functions"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-error-exception"]
+    },
+    {
+      "id": "recursion",
+      "name": "Recursion",
+      "domain": "control-flow",
+      "prerequisites": ["functions", "conditionals"],
+      "confusion_pairs": [],
+      "misconceptions": ["missing-base-case", "confuse-loop-recursion"]
+    },
+    {
+      "id": "functions",
+      "name": "Functions",
+      "domain": "abstraction",
+      "floor": 5,
+      "prerequisites": ["variables", "scope"],
+      "confusion_pairs": ["methods"],
+      "misconceptions": ["confuse-params-order", "confuse-return-print"]
+    },
+    {
+      "id": "closures",
+      "name": "Closures",
+      "domain": "abstraction",
+      "prerequisites": ["functions", "scope"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-closure-function"]
+    },
+    {
+      "id": "higher-order-functions",
+      "name": "Higher-Order Functions",
+      "domain": "abstraction",
+      "prerequisites": ["closures"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "partial-application",
+      "name": "Partial Application",
+      "domain": "abstraction",
+      "prerequisites": ["higher-order-functions"],
+      "confusion_pairs": ["function-composition"],
+      "misconceptions": ["confuse-partial-curry"]
+    },
+    {
+      "id": "function-composition",
+      "name": "Function Composition",
+      "domain": "abstraction",
+      "prerequisites": ["higher-order-functions"],
+      "confusion_pairs": ["partial-application"],
+      "misconceptions": []
+    },
+    {
+      "id": "methods",
+      "name": "Methods",
+      "domain": "abstraction",
+      "prerequisites": ["functions", "classes"],
+      "confusion_pairs": ["functions"],
+      "misconceptions": ["confuse-static-instance"]
+    },
+    {
+      "id": "classes",
+      "name": "Classes",
+      "domain": "abstraction",
+      "prerequisites": ["functions", "compound-types"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-class-instance"]
+    },
+    {
+      "id": "interfaces-traits",
+      "name": "Interfaces & Traits",
+      "domain": "abstraction",
+      "prerequisites": ["classes"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-interface-class"]
+    },
+    {
+      "id": "polymorphism",
+      "name": "Polymorphism",
+      "domain": "abstraction",
+      "prerequisites": ["interfaces-traits"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "inheritance",
+      "name": "Inheritance",
+      "domain": "abstraction",
+      "prerequisites": ["classes"],
+      "confusion_pairs": ["interfaces-traits"],
+      "misconceptions": ["confuse-inherit-compose"]
+    },
+    {
+      "id": "modules",
+      "name": "Modules",
+      "domain": "abstraction",
+      "prerequisites": ["functions", "scope"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "arrays-lists",
+      "name": "Arrays & Lists",
+      "domain": "data-structures",
+      "floor": 6,
+      "prerequisites": ["compound-types", "loops-definite"],
+      "confusion_pairs": [],
+      "misconceptions": ["one-based-indexing", "confuse-array-list"]
+    },
+    {
+      "id": "maps-dictionaries",
+      "name": "Maps & Dictionaries",
+      "domain": "data-structures",
+      "prerequisites": ["arrays-lists"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "sets",
+      "name": "Sets",
+      "domain": "data-structures",
+      "prerequisites": ["arrays-lists"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "strings",
+      "name": "Strings",
+      "domain": "data-structures",
+      "prerequisites": ["arrays-lists"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-char-string"]
+    },
+    {
+      "id": "stacks-queues",
+      "name": "Stacks & Queues",
+      "domain": "data-structures",
+      "prerequisites": ["arrays-lists"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "trees",
+      "name": "Trees",
+      "domain": "data-structures",
+      "prerequisites": ["arrays-lists", "recursion"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "tuples-records",
+      "name": "Tuples & Records",
+      "domain": "data-structures",
+      "prerequisites": ["compound-types"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "immutability",
+      "name": "Immutability",
+      "domain": "state-mutation",
+      "prerequisites": ["variables"],
+      "confusion_pairs": ["mutation"],
+      "misconceptions": ["confuse-const-immutable"]
+    },
+    {
+      "id": "mutation",
+      "name": "Mutation",
+      "domain": "state-mutation",
+      "prerequisites": ["variables", "assignment"],
+      "confusion_pairs": ["immutability"],
+      "misconceptions": []
+    },
+    {
+      "id": "references-pointers",
+      "name": "References & Pointers",
+      "domain": "state-mutation",
+      "prerequisites": ["variables", "scope"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-value-reference"]
+    },
+    {
+      "id": "ownership-borrowing",
+      "name": "Ownership & Borrowing",
+      "domain": "state-mutation",
+      "prerequisites": ["references-pointers"],
+      "confusion_pairs": ["lifetime-ownership"],
+      "misconceptions": []
+    },
+    {
+      "id": "threads",
+      "name": "Threads",
+      "domain": "concurrency",
+      "prerequisites": ["functions", "mutation"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "message-passing",
+      "name": "Message Passing",
+      "domain": "concurrency",
+      "prerequisites": ["functions"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "channels",
+      "name": "Channels",
+      "domain": "concurrency",
+      "prerequisites": ["message-passing"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "async-await",
+      "name": "Async / Await",
+      "domain": "concurrency",
+      "prerequisites": ["functions", "closures"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-async-parallel"]
+    },
+    {
+      "id": "locking",
+      "name": "Locking",
+      "domain": "concurrency",
+      "prerequisites": ["threads", "mutation"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "console-io",
+      "name": "Console I/O",
+      "domain": "io-effects",
+      "prerequisites": ["functions"],
+      "confusion_pairs": [],
+      "misconceptions": ["confuse-return-print"]
+    },
+    {
+      "id": "file-io",
+      "name": "File I/O",
+      "domain": "io-effects",
+      "prerequisites": ["console-io", "error-handling"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "pure-functions",
+      "name": "Pure Functions",
+      "domain": "io-effects",
+      "prerequisites": ["functions", "immutability"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "monads-effect-systems",
+      "name": "Monads & Effect Systems",
+      "domain": "io-effects",
+      "prerequisites": ["pure-functions", "higher-order-functions", "generics"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "accumulator-pattern",
+      "name": "Accumulator Pattern",
+      "domain": "patterns",
+      "prerequisites": ["loops-definite", "variables"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "filter-pattern",
+      "name": "Filter Pattern",
+      "domain": "patterns",
+      "prerequisites": ["conditionals", "arrays-lists"],
+      "confusion_pairs": ["map-pattern"],
+      "misconceptions": []
+    },
+    {
+      "id": "map-pattern",
+      "name": "Map Pattern",
+      "domain": "patterns",
+      "prerequisites": ["higher-order-functions", "arrays-lists"],
+      "confusion_pairs": ["filter-pattern"],
+      "misconceptions": []
+    },
+    {
+      "id": "divide-and-conquer",
+      "name": "Divide & Conquer",
+      "domain": "patterns",
+      "prerequisites": ["recursion", "arrays-lists"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "builder-pattern",
+      "name": "Builder Pattern",
+      "domain": "patterns",
+      "prerequisites": ["classes", "methods"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    },
+    {
+      "id": "iterator-pattern",
+      "name": "Iterator Pattern",
+      "domain": "patterns",
+      "prerequisites": ["interfaces-traits", "loops-definite"],
+      "confusion_pairs": [],
+      "misconceptions": []
+    }
+  ]
+}

@@ -1,0 +1,961 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80 -120 600 780" width="600" height="780">
+  <defs>
+    <!-- ATMOSPHERE_DEFS_PLACEHOLDER -->
+
+    <!-- Realistic ashlar stone pattern with varied block sizes -->
+    <pattern id="stone" patternUnits="userSpaceOnUse" width="60" height="40">
+      <!-- Base mortar color -->
+      <rect width="60" height="40" fill="#6a6a82"/>
+      <!-- Stone blocks - course 1 -->
+      <rect x="1" y="1" width="28" height="18" rx="0.5" fill="#7a7a96"/>
+      <rect x="31" y="1" width="18" height="18" rx="0.5" fill="#747490"/>
+      <rect x="51" y="1" width="8" height="18" rx="0.5" fill="#7e7e9a"/>
+      <!-- Stone blocks - course 2 (offset) -->
+      <rect x="1" y="21" width="15" height="18" rx="0.5" fill="#767692"/>
+      <rect x="18" y="21" width="24" height="18" rx="0.5" fill="#7c7c98"/>
+      <rect x="44" y="21" width="15" height="18" rx="0.5" fill="#727290"/>
+    </pattern>
+
+    <!-- Underground stone (darker, rougher) -->
+    <pattern id="stone-deep" patternUnits="userSpaceOnUse" width="60" height="40">
+      <rect width="60" height="40" fill="#525268"/>
+      <rect x="1" y="1" width="28" height="18" rx="0.5" fill="#606080"/>
+      <rect x="31" y="1" width="18" height="18" rx="0.5" fill="#5c5c7a"/>
+      <rect x="51" y="1" width="8" height="18" rx="0.5" fill="#626282"/>
+      <rect x="1" y="21" width="15" height="18" rx="0.5" fill="#5a5a78"/>
+      <rect x="18" y="21" width="24" height="18" rx="0.5" fill="#5e5e7e"/>
+      <rect x="44" y="21" width="15" height="18" rx="0.5" fill="#585876"/>
+    </pattern>
+
+    <!-- Earth texture -->
+    <pattern id="earth" patternUnits="userSpaceOnUse" width="24" height="24">
+      <rect width="24" height="24" fill="#3a2a1f"/>
+      <circle cx="4" cy="6" r="1.2" fill="#4a3a2a" opacity="0.4"/>
+      <circle cx="16" cy="14" r="1.8" fill="#4a3a2a" opacity="0.35"/>
+      <circle cx="10" cy="3" r="0.9" fill="#4a3a2a" opacity="0.25"/>
+      <circle cx="20" cy="20" r="1" fill="#4a3a2a" opacity="0.3"/>
+      <circle cx="6" cy="18" r="0.7" fill="#352518" opacity="0.3"/>
+    </pattern>
+
+    <!-- Grass texture -->
+    <pattern id="grass" patternUnits="userSpaceOnUse" width="20" height="6">
+      <rect width="20" height="6" fill="#4a6a3a"/>
+      <path d="M2,6 L3,2 L4,6" fill="#5a7a4a" opacity="0.5"/>
+      <path d="M8,6 L9,1 L10,6" fill="#5a8048" opacity="0.4"/>
+      <path d="M14,6 L15,3 L16,6" fill="#4e7040" opacity="0.45"/>
+    </pattern>
+
+    <!-- SIDE_LIGHT_PLACEHOLDER -->
+
+    <!-- Vertical weathering: darker at base (subtle) -->
+    <linearGradient id="weather" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="80%" stop-color="black" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <!-- Roof left face (lit side) -->
+    <linearGradient id="roof-left" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c49af0"/>
+      <stop offset="30%" stop-color="#b580e8"/>
+      <stop offset="100%" stop-color="#9a60d8"/>
+    </linearGradient>
+
+    <!-- Roof right face (shadow side) -->
+    <linearGradient id="roof-right" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9a5ad0"/>
+      <stop offset="40%" stop-color="#8248c0"/>
+      <stop offset="100%" stop-color="#6a30a8"/>
+    </linearGradient>
+
+    <!-- Slate shingle pattern for roof -->
+    <pattern id="roof-shingle" patternUnits="userSpaceOnUse" width="16" height="8">
+      <rect width="16" height="8" fill="none"/>
+      <line x1="0" y1="8" x2="16" y2="8" stroke="black" stroke-width="0.4" opacity="0.15"/>
+      <line x1="4" y1="0" x2="4" y2="8" stroke="black" stroke-width="0.3" opacity="0.08"/>
+      <line x1="12" y1="0" x2="12" y2="8" stroke="black" stroke-width="0.3" opacity="0.08"/>
+    </pattern>
+
+    <radialGradient id="star-glow">
+      <stop offset="0%" stop-color="#ffd54f" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#ffd54f" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffd54f" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- WINDOW_DEFS_PLACEHOLDER -->
+
+    <!-- Ground shadow from tower -->
+    <radialGradient id="tower-shadow" cx="0.55" cy="0" rx="0.35" ry="0.6">
+      <stop offset="0%" stop-color="black" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Clip paths for floors -->
+    <clipPath id="clip-above">
+      <rect x="-22" y="-15" width="484" height="511"/>
+    </clipPath>
+    <clipPath id="clip-below">
+      <rect x="-22" y="496" width="484" height="139"/>
+    </clipPath>
+    <!-- Edge fade mask for landscape elements -->
+    <linearGradient id="fade-left" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="black" stop-opacity="1"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fade-right" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="100%" stop-color="black" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fade-bottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="100%" stop-color="black" stop-opacity="1"/>
+    </linearGradient>
+    <mask id="edge-fade" maskUnits="userSpaceOnUse" x="-80" y="-120" width="600" height="780">
+      <rect x="-80" y="-120" width="600" height="780" fill="white"/>
+      <rect x="-80" y="-120" width="90" height="780" fill="url(#fade-left)"/>
+      <rect x="430" y="-120" width="90" height="780" fill="url(#fade-right)"/>
+      <rect x="-80" y="570" width="600" height="90" fill="url(#fade-bottom)"/>
+    </mask>
+  </defs>
+
+  <!-- ATMOSPHERE_SCENE_PLACEHOLDER -->
+
+  <g mask="url(#edge-fade)">
+  <!-- ========== GROUND ========== -->
+  <!-- Shadow cast by tower on ground -->
+  <ellipse cx="260" cy="498" rx="160" ry="20" fill="url(#tower-shadow)"/>
+
+  <!-- Earth cross-section flanking the tower (left side) -->
+  <!-- The dungeon is underground: earth visible beside the tower walls -->
+  <polygon points="-80,497 39,497 15,570 -80,570" fill="#3a2a1f"/>
+  <polygon points="-80,497 39,497 15,570 -80,570" fill="url(#earth)" opacity="0.5"/>
+  <!-- Grass cap on left earth (ground level) -->
+  <line x1="-80" y1="497" x2="39" y2="497" stroke="#3a5a2a" stroke-width="4"/>
+  <line x1="-80" y1="496" x2="39" y2="496" stroke="#5a8a4a" stroke-width="1" opacity="0.5"/>
+  <!-- Left earth cross-section details -->
+  <path d="M-80,510 Q-40,512 0,508 Q20,510 38,509" fill="none" stroke="#4a3a28" stroke-width="1" opacity="0.4"/>
+  <path d="M-80,530 Q-30,534 10,528 Q25,532 30,530" fill="none" stroke="#5a4030" stroke-width="0.8" opacity="0.3"/>
+  <ellipse cx="-20" cy="525" rx="5" ry="3" fill="#5a5a6a" opacity="0.35"/>
+  <ellipse cx="-50" cy="545" rx="4" ry="2.5" fill="#606070" opacity="0.3"/>
+  <ellipse cx="5" cy="550" rx="3.5" ry="2" fill="#555568" opacity="0.25"/>
+  <!-- Roots hanging from grass cap (left) -->
+  <path d="M-30,499 Q-33,510 -28,522" fill="none" stroke="#5a4a32" stroke-width="1" opacity="0.35"/>
+  <path d="M-10,499 Q-14,508 -8,518 Q-12,526 -6,533" fill="none" stroke="#5a4a32" stroke-width="0.8" opacity="0.3"/>
+  <path d="M10,499 Q7,508 12,516" fill="none" stroke="#5a4a32" stroke-width="0.8" opacity="0.25"/>
+
+  <!-- Earth cross-section flanking the tower (right side) -->
+  <polygon points="401,497 520,497 520,570 425,570" fill="#3a2a1f"/>
+  <polygon points="401,497 520,497 520,570 425,570" fill="url(#earth)" opacity="0.5"/>
+  <!-- Grass cap on right earth (ground level) -->
+  <line x1="401" y1="497" x2="520" y2="497" stroke="#3a5a2a" stroke-width="4"/>
+  <line x1="401" y1="496" x2="520" y2="496" stroke="#5a8a4a" stroke-width="1" opacity="0.5"/>
+  <!-- Right earth cross-section details -->
+  <path d="M403,510 Q430,508 460,512 Q490,509 520,510" fill="none" stroke="#4a3a28" stroke-width="1" opacity="0.4"/>
+  <path d="M410,530 Q440,528 470,534 Q500,530 520,532" fill="none" stroke="#5a4030" stroke-width="0.8" opacity="0.3"/>
+  <ellipse cx="450" cy="530" rx="4.5" ry="3" fill="#5a5a6a" opacity="0.35"/>
+  <ellipse cx="480" cy="548" rx="3.5" ry="2.5" fill="#606070" opacity="0.3"/>
+  <ellipse cx="430" cy="555" rx="4" ry="2" fill="#555568" opacity="0.25"/>
+  <!-- Roots hanging from grass cap (right) -->
+  <path d="M440,499 Q443,510 438,522" fill="none" stroke="#5a4a32" stroke-width="1" opacity="0.35"/>
+  <path d="M465,499 Q468,508 462,518 Q466,526 460,533" fill="none" stroke="#5a4a32" stroke-width="0.8" opacity="0.3"/>
+  <path d="M490,499 Q494,508 488,516" fill="none" stroke="#5a4a32" stroke-width="0.8" opacity="0.25"/>
+  </g>
+
+  <!-- ========== TOWER STRUCTURE ========== -->
+
+  <!-- Floor 6 (underground): y=500..570 -->
+  <polygon points="39,500 401,500 425,570 15,570" fill="url(#stone-deep)"/>
+  <polygon points="39,500 401,500 425,570 15,570" fill="url(#side-light)"/>
+
+  <!-- Roots -->
+  <path d="M15,570 Q-2,548 -8,562" stroke="#5a4a32" stroke-width="3" fill="none" opacity="0.45"/>
+  <path d="M425,570 Q442,544 448,558" stroke="#5a4a32" stroke-width="3" fill="none" opacity="0.45"/>
+  <path d="M15,545 Q0,532 -6,548" stroke="#5a4a32" stroke-width="2.5" fill="none" opacity="0.35"/>
+  <path d="M425,548 Q440,536 446,550" stroke="#5a4a32" stroke-width="2.5" fill="none" opacity="0.35"/>
+  <path d="M39,515 Q25,508 18,522" stroke="#5a4a32" stroke-width="1.8" fill="none" opacity="0.25"/>
+  <path d="M401,518 Q415,510 422,524" stroke="#5a4a32" stroke-width="1.8" fill="none" opacity="0.25"/>
+
+  <!-- Floor 5: y=430..500 -->
+  <polygon points="64,430 376,430 401,500 39,500" fill="url(#stone)"/>
+  <polygon points="64,430 376,430 401,500 39,500" fill="url(#side-light)"/>
+  <polygon points="64,430 376,430 401,500 39,500" fill="url(#weather)"/>
+
+  <!-- Floor 4: y=360..430 -->
+  <polygon points="88,360 352,360 376,430 64,430" fill="url(#stone)"/>
+  <polygon points="88,360 352,360 376,430 64,430" fill="url(#side-light)"/>
+  <polygon points="88,360 352,360 376,430 64,430" fill="url(#weather)"/>
+
+  <!-- Floor 3: y=290..360 -->
+  <polygon points="112,290 328,290 352,360 88,360" fill="url(#stone)"/>
+  <polygon points="112,290 328,290 352,360 88,360" fill="url(#side-light)"/>
+
+  <!-- Floor 2: y=220..290 -->
+  <polygon points="136,220 304,220 328,290 112,290" fill="url(#stone)"/>
+  <polygon points="136,220 304,220 328,290 112,290" fill="url(#side-light)"/>
+
+  <!-- Floor 1: y=150..220 -->
+  <polygon points="161,150 279,150 304,220 136,220" fill="url(#stone)"/>
+  <polygon points="161,150 279,150 304,220 136,220" fill="url(#side-light)"/>
+
+  <!-- Floor 0 (top): y=80..150 -->
+  <polygon points="185,80 255,80 279,150 161,150" fill="url(#stone)"/>
+  <polygon points="185,80 255,80 279,150 161,150" fill="url(#side-light)"/>
+
+  <!-- ========== ROOF ========== -->
+  <!-- Left face (lit) -->
+  <polygon points="220,18 185,80 220,80" fill="url(#roof-left)"/>
+  <polygon points="220,18 185,80 220,80" fill="url(#roof-shingle)" opacity="0.5"/>
+  <!-- Right face (shadow) -->
+  <polygon points="220,18 220,80 255,80" fill="url(#roof-right)"/>
+  <polygon points="220,18 220,80 255,80" fill="url(#roof-shingle)" opacity="0.4"/>
+  <!-- Ridge line (center vertical) -->
+  <line x1="220" y1="18" x2="220" y2="80" stroke="#d4b0f4" stroke-width="1" opacity="0.35"/>
+  <!-- Roof edge highlight (left lit side) -->
+  <line x1="220" y1="18" x2="185" y2="80" stroke="#d4b0f4" stroke-width="1" opacity="0.5"/>
+  <!-- Roof edge shadow (right dark side) -->
+  <line x1="220" y1="18" x2="255" y2="80" stroke="#5a2090" stroke-width="1" opacity="0.4"/>
+  <!-- Roof base line -->
+  <line x1="185" y1="80" x2="255" y2="80" stroke="#5a2090" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Official Vala V logo centered in roof -->
+  <g transform="translate(198.3, 27.6) scale(0.7)" opacity="0.5">
+    <path d="M 28.137527,45.125 27.573563,21.216309 q -2.460938,0.922851 -3.845215,2.888183 -1.367188,1.965332 -1.367188,4.887695 0,0.666504 0.06836,1.09375 0.08545,0.410157 0.170898,0.666504 0.08545,0.239258 0.153809,0.375977 0.08545,0.136719 0.08545,0.239258 -0.905762,0 -1.606445,-0.170899 -0.700684,-0.187988 -1.1792,-0.581054 Q 19.592606,30.222656 19.336258,29.573242 19.097,28.923828 19.097,27.966797 q 0,-1.16211 0.495606,-2.290039 0.512695,-1.12793 1.384277,-2.136231 0.888672,-1.0083 2.067871,-1.862793 1.196289,-0.854492 2.546387,-1.469726 1.367187,-0.632324 2.836914,-0.974121 1.486816,-0.358887 2.956543,-0.358887 0.393066,0 0.717773,0.01709 0.341797,0.01709 0.683594,0.05127 l 0.307617,21.533203 7.365723,-21.430664 h 2.443847 l -9.724121,26.079102 z"
+          fill="white"/>
+  </g>
+
+  <!-- Star with subtle glow -->
+  <circle cx="220" cy="10" r="20" fill="url(#star-glow)"/>
+  <g transform="translate(220,10) scale(1.2)">
+    <polygon points="0,-7 2,-2.5 7,-1.5 3.2,1.8 4.2,7 0,4.5 -4.2,7 -3.2,1.8 -7,-1.5 -2,-2.5"
+             fill="#ffd54f" opacity="0.9"/>
+  </g>
+  <circle cx="220" cy="10" r="10" fill="none" stroke="#ffd54f" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- ========== TOWER OUTLINE (structural edges) ========== -->
+  <!-- Left wall -->
+  <line x1="185" y1="80" x2="15" y2="570" stroke="#50506a" stroke-width="2"/>
+  <!-- Right wall -->
+  <line x1="255" y1="80" x2="425" y2="570" stroke="#50506a" stroke-width="2"/>
+  <!-- Base -->
+  <line x1="15" y1="570" x2="425" y2="570" stroke="#50506a" stroke-width="2"/>
+
+  <!-- ========== FLOOR DIVIDERS (mortar/ledge lines) ========== -->
+  <!-- Each floor divider has a slight 3D ledge effect -->
+  <line x1="161" y1="150" x2="279" y2="150" stroke="#50506a" stroke-width="1.5"/>
+  <line x1="161" y1="151" x2="279" y2="151" stroke="#8a8aa0" stroke-width="0.5" opacity="0.4"/>
+
+  <line x1="136" y1="220" x2="304" y2="220" stroke="#50506a" stroke-width="1.5"/>
+  <line x1="136" y1="221" x2="304" y2="221" stroke="#8a8aa0" stroke-width="0.5" opacity="0.4"/>
+
+  <line x1="112" y1="290" x2="328" y2="290" stroke="#50506a" stroke-width="1.5"/>
+  <line x1="112" y1="291" x2="328" y2="291" stroke="#8a8aa0" stroke-width="0.5" opacity="0.4"/>
+
+  <line x1="88" y1="360" x2="352" y2="360" stroke="#50506a" stroke-width="1.5"/>
+  <line x1="88" y1="361" x2="352" y2="361" stroke="#8a8aa0" stroke-width="0.5" opacity="0.4"/>
+
+  <line x1="64" y1="430" x2="376" y2="430" stroke="#50506a" stroke-width="1.5"/>
+  <line x1="64" y1="431" x2="376" y2="431" stroke="#8a8aa0" stroke-width="0.5" opacity="0.4"/>
+
+  <line x1="39" y1="500" x2="401" y2="500" stroke="#50506a" stroke-width="2"/>
+  <line x1="39" y1="501" x2="401" y2="501" stroke="#8a8aa0" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Ground surface lines flanking tower -->
+  <g mask="url(#edge-fade)">
+  <line x1="-80" y1="497" x2="40" y2="497" stroke="#3a5a2a" stroke-width="2.5"/>
+  <line x1="400" y1="497" x2="520" y2="497" stroke="#3a5a2a" stroke-width="2.5"/>
+  </g>
+
+  <!-- DECORATION_FLOOR_1_START -->
+  <!-- ========== TELESCOPE (Observatory level, left wall) ========== -->
+  <!-- Conical wooden telescope: narrow at wall (149,185), wide at lens (80,138) -->
+  <!-- Axis unit (-0.826,-0.563), perp unit (0.563,-0.826)/(-0.563,0.826) -->
+  <!-- Wood cone body -->
+  <polygon points="150.1,183.3 147.9,186.7 76.1,143.8 83.9,132.2" fill="#3a2518"/>
+  <polygon points="150.1,183.3 147.9,186.7 76.1,143.8 83.9,132.2" fill="#5a3820" opacity="0.6"/>
+  <!-- Wood grain (parallel to axis) -->
+  <line x1="149.8" y1="183.8" x2="82" y2="134" stroke="#4a2a14" stroke-width="0.5" opacity="0.45"/>
+  <line x1="149" y1="185.8" x2="78" y2="141" stroke="#6a4828" stroke-width="0.4" opacity="0.35"/>
+  <line x1="148.3" y1="186.4" x2="77" y2="143" stroke="#4a2a14" stroke-width="0.3" opacity="0.3"/>
+  <line x1="150" y1="183.5" x2="83" y2="133" stroke="#6a4828" stroke-width="0.3" opacity="0.3"/>
+  <!-- Brass bands: all perpendicular to axis, spanning full cone width at each point -->
+  <!-- Band at 25%: center (131.8,173.3), half-width 3.25 -->
+  <line x1="133.6" y1="170.6" x2="129.9" y2="175.9" stroke="#c8a040" stroke-width="2.2" opacity="0.6"/>
+  <!-- Band at 55%: center (111.1,159.2), half-width 4.75 -->
+  <line x1="113.7" y1="155.2" x2="108.4" y2="163.1" stroke="#c8a040" stroke-width="2.2" opacity="0.6"/>
+  <!-- Brass rim at lens end: full cone opening -->
+  <line x1="83.9" y1="132.2" x2="76.1" y2="143.8" stroke="#c8a040" stroke-width="2.2" opacity="0.65"/>
+  <!-- Lens: half-ellipse capping the open end, bulging outward along axis -->
+  <path d="M83.9,132.2 Q70,132 76.1,143.8" fill="#1a2a3a" opacity="0.85"/>
+  <path d="M83,133.5 Q72,133.5 76.8,142.5" fill="#4a7a8a" opacity="0.35"/>
+  <path d="M81.5,135 Q74,135 77.5,141" fill="white" opacity="0.1"/>
+  <!-- DECORATION_FLOOR_1_END -->
+
+  <!-- ========== GOTHIC ARCH WINDOWS WITH STONE SURROUNDS ========== -->
+  <!-- Window template: 14x28 ogival arch with stone frame (voussoirs) -->
+  <!-- Frame path: outer arch with 2px stone surround -->
+  <!-- Glass: inner arch with gradient + reflection + depth overlay -->
+
+  <!-- Floor 0 (y=101, 1 window) -->
+  <g transform="translate(213,101)">
+    <!-- Stone surround -->
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <!-- Keystone accent -->
+    <path d="M5,-1.5 L7,-2.5 L9,-1.5 L9,1 L5,1 Z" fill="#5a5a74" stroke="#50506a" stroke-width="0.3"/>
+    <!-- Window recess -->
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <!-- Glass -->
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.65"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <!-- Mullion and tracery -->
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <!-- Reflection highlight -->
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.12"/>
+    <!-- Sill -->
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+
+  <!-- Floor 1 (y=171, 3 windows, c2c~54) -->
+  <g transform="translate(159,171)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.6"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.12"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(213,171)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.6"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.12"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(267,171)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.6"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.12"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+
+  <!-- Floor 2 (y=241, 7 windows, c2c~26) -->
+  <g transform="translate(134,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(160,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(187,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(213,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(239,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(266,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(292,241)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.55"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+
+  <!-- Floor 3 (y=311, 8 windows, c2c~29) -->
+  <g transform="translate(110,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(139,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(169,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(198,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(228,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(257,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(287,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(316,311)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#6a6a86" stroke="#50506a" stroke-width="0.5"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.5"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="7" cy="5.5" r="2.5" fill="none" stroke="#50506a" stroke-width="0.6" opacity="0.35"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.8" opacity="0.1"/>
+    <rect x="-1" y="28" width="16" height="1.5" rx="0.3" fill="#6a6a86" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+
+  <!-- Floor 4 (y=381, 15 windows, c2c~18) -->
+  <g transform="translate(86,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(104,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(122,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(140,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(159,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(177,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(195,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(213,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(231,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(250,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(268,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(286,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(304,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(322,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(340,381)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#646480" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.45"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.45"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.08"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#646480" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+
+  <!-- Floor 5 (y=451, 15 windows, c2c~22) -->
+  <g transform="translate(61,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(83,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(105,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(126,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(148,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(170,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(191,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(213,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(234,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(256,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(278,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(299,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(321,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(343,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(364,451)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#5e5e7c" stroke="#50506a" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#262638"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.4"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#50506a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.07"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#5e5e7c" stroke="#50506a" stroke-width="0.3"/>
+  </g>
+
+  <!-- Floor 6 (y=521, 7 windows, underground) -->
+  <g transform="translate(37,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(96,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(154,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(213,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(272,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(330,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+  <g transform="translate(389,521)">
+    <path d="M-2,29 L-2,11 Q-2,0 7,-2 Q16,0 16,11 L16,29 Z" fill="#565672" stroke="#464660" stroke-width="0.4"/>
+    <path d="M0,28 L0,12 Q0,2 7,0 Q14,2 14,12 L14,28 Z" fill="#222234"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#glass)" opacity="0.3"/>
+    <path d="M1.5,27 L1.5,12.5 Q1.5,3 7,1 Q12.5,3 12.5,12.5 L12.5,27 Z" fill="url(#window-depth)"/>
+    <line x1="7" y1="27" x2="7" y2="3" stroke="#464660" stroke-width="0.7" opacity="0.4"/>
+    <line x1="3.5" y1="23" x2="5.5" y2="8" stroke="white" stroke-width="0.7" opacity="0.05"/>
+    <rect x="-1" y="28" width="16" height="1.2" rx="0.3" fill="#565672" stroke="#464660" stroke-width="0.3"/>
+  </g>
+
+  <!-- DECORATION_FLOOR_2_START -->
+  <!-- ========== SCROLL (Scriptorium, Floor 2, rightmost window) ========== -->
+  <!-- Parchment unfurling from the sill of window at (292,241), sill at y=269 -->
+  <!-- Parchment draped over sill, shorter -->
+  <path d="M295,269 L295,286 Q296,291 299,293 Q302,291 303,286 L303,269"
+        fill="#e0c88a" stroke="#b8a060" stroke-width="0.5"/>
+  <!-- Aged parchment shading -->
+  <path d="M295.5,270 L295.5,285 Q296.5,290 299,292 Q301.5,290 302.5,285 L302.5,270"
+        fill="#d4bc80" opacity="0.5"/>
+  <!-- Darker edges (aged look) -->
+  <line x1="295.5" y1="270" x2="295.5" y2="284" stroke="#b09050" stroke-width="0.4" opacity="0.3"/>
+  <line x1="302.5" y1="270" x2="302.5" y2="284" stroke="#b09050" stroke-width="0.4" opacity="0.3"/>
+  <!-- Faint text lines -->
+  <line x1="296.5" y1="274" x2="301.5" y2="274" stroke="#8a7040" stroke-width="0.4" opacity="0.35"/>
+  <line x1="296.5" y1="277" x2="301" y2="277" stroke="#8a7040" stroke-width="0.4" opacity="0.3"/>
+  <line x1="296.5" y1="280" x2="300.5" y2="280" stroke="#8a7040" stroke-width="0.4" opacity="0.35"/>
+  <line x1="296.5" y1="283" x2="301.5" y2="283" stroke="#8a7040" stroke-width="0.4" opacity="0.25"/>
+  <line x1="296.5" y1="286" x2="300" y2="286" stroke="#8a7040" stroke-width="0.4" opacity="0.3"/>
+  <!-- Rolled-up bottom curl -->
+  <ellipse cx="299" cy="293" rx="4.5" ry="2.8" fill="#d8c080"/>
+  <ellipse cx="299" cy="293" rx="4.5" ry="2.8" fill="none" stroke="#b8a060" stroke-width="0.5"/>
+  <!-- Roll shadow/depth -->
+  <ellipse cx="299" cy="293.8" rx="3.5" ry="1.5" fill="#c0a868" opacity="0.6"/>
+  <!-- Roll highlight -->
+  <ellipse cx="299" cy="292" rx="3.2" ry="1" fill="#ecdaa0" opacity="0.4"/>
+  <!-- Wooden rod visible at roll ends -->
+  <circle cx="294.2" cy="293" r="1.2" fill="#5a3a20" stroke="#3a2518" stroke-width="0.4"/>
+  <circle cx="303.8" cy="293" r="1.2" fill="#5a3a20" stroke="#3a2518" stroke-width="0.4"/>
+  <!-- DECORATION_FLOOR_2_END -->
+
+  <!-- DECORATION_FLOOR_3_START -->
+  <!-- ========== POTION SMOKE (Laboratory, Floor 3, leftmost window) ========== -->
+  <!-- Colored smoke wisps rising from window at (110,311), window top arch ~y=314 -->
+  <!-- Diffuse glow behind smoke -->
+  <ellipse cx="115" cy="296" rx="14" ry="24" fill="#8060b0" opacity="0.15"/>
+  <ellipse cx="118" cy="290" rx="10" ry="18" fill="#50a060" opacity="0.1"/>
+  <!-- Purple wisps -->
+  <path d="M117,318 Q110,308 118,298 Q126,288 116,278"
+        fill="none" stroke="#9060c0" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M117,318 Q110,308 118,298 Q126,288 116,278"
+        fill="none" stroke="#c090e8" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M114,320 Q106,310 112,300 Q120,290 110,280 Q104,274 110,268"
+        fill="none" stroke="#7848a8" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+  <path d="M114,320 Q106,310 112,300 Q120,290 110,280 Q104,274 110,268"
+        fill="none" stroke="#a070d0" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <!-- Green wisps -->
+  <path d="M120,319 Q128,308 121,298 Q112,290 121,280"
+        fill="none" stroke="#409050" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+  <path d="M120,319 Q128,308 121,298 Q112,290 121,280"
+        fill="none" stroke="#60c070" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <path d="M118,316 Q124,306 116,296 Q110,288 117,278 Q122,272 116,266"
+        fill="none" stroke="#50a860" stroke-width="3.5" stroke-linecap="round" opacity="0.35"/>
+  <path d="M118,316 Q124,306 116,296 Q110,288 117,278 Q122,272 116,266"
+        fill="none" stroke="#70c880" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+  <!-- DECORATION_FLOOR_3_END -->
+
+  <!-- DECORATION_FLOOR_4_START -->
+  <!-- ========== BOOKS (Library, Floor 4, window at x=286) ========== -->
+  <!-- Small stack of books resting on the window sill at (286,381), sill y=409 -->
+  <!-- Book 1: thick, dark red -->
+  <rect x="289" y="400" width="4" height="10" rx="0.3" fill="#8b2020" stroke="#5a1515" stroke-width="0.4"/>
+  <line x1="289.8" y1="401" x2="289.8" y2="409" stroke="#6a1818" stroke-width="0.3" opacity="0.5"/>
+  <!-- Book 2: medium, blue, leaning slightly -->
+  <rect x="293.5" y="401" width="3.5" height="9" rx="0.3" fill="#2a4a8a" stroke="#1a3060" stroke-width="0.4" transform="rotate(-4,295,405)"/>
+  <line x1="294.2" y1="402" x2="294.2" y2="409" stroke="#1a3870" stroke-width="0.3" opacity="0.5"/>
+  <!-- Book 3: thin, green -->
+  <rect x="297" y="402" width="2.5" height="8" rx="0.3" fill="#2a6a30" stroke="#1a4a20" stroke-width="0.4"/>
+  <!-- Book 4: thick, brown, leaning other way -->
+  <rect x="299.5" y="399" width="4.5" height="11" rx="0.3" fill="#6a4a28" stroke="#4a3018" stroke-width="0.4" transform="rotate(6,302,405)"/>
+  <line x1="300.3" y1="400" x2="300.3" y2="409" stroke="#5a3a20" stroke-width="0.3" opacity="0.5"/>
+  <!-- Page edges visible on tops -->
+  <line x1="289.5" y1="400" x2="292.5" y2="400" stroke="#d8d0c0" stroke-width="0.6" opacity="0.5"/>
+  <line x1="299.8" y1="399" x2="303.5" y2="399.5" stroke="#d8d0c0" stroke-width="0.6" opacity="0.4"/>
+  <!-- DECORATION_FLOOR_4_END -->
+
+  <!-- DECORATION_FLOOR_5_START -->
+  <!-- ========== TORCH (Vestibule, Floor 5, left wall) ========== -->
+  <!-- Wall-mounted torch on the left wall exterior -->
+  <!-- Left wall at Floor 5: from (64,430) to (39,500). At y=465: x≈52 -->
+  <!-- Iron bracket mounted on wall -->
+  <path d="M52,470 L42,467 L42,464" fill="none" stroke="#4a4a5a" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="52" cy="470" r="1.5" fill="#4a4a5a"/>
+  <!-- Torch handle (wood) -->
+  <rect x="39" y="456" width="3.5" height="14" rx="0.8" fill="#5a3a20" stroke="#3a2518" stroke-width="0.5"/>
+  <line x1="40.2" y1="457" x2="40.2" y2="469" stroke="#6a4828" stroke-width="0.4" opacity="0.4"/>
+  <!-- Torch wrap -->
+  <line x1="39" y1="459" x2="42.5" y2="459" stroke="#8a7a60" stroke-width="1" opacity="0.5"/>
+  <line x1="39" y1="461" x2="42.5" y2="461" stroke="#8a7a60" stroke-width="0.8" opacity="0.4"/>
+  <!-- Flame glow -->
+  <ellipse cx="40.8" cy="450" rx="10" ry="12" fill="#ff8020" opacity="0.15"/>
+  <ellipse cx="40.8" cy="448" rx="6" ry="8" fill="#ffb040" opacity="0.12"/>
+  <!-- Flame -->
+  <path d="M40.8,456 Q37,449 40.8,442 Q44.5,449 40.8,456" fill="#e06010" opacity="0.75"/>
+  <path d="M40.8,455 Q38,449 40.8,444 Q43.5,449 40.8,455" fill="#f0a030" opacity="0.75"/>
+  <path d="M40.8,454 Q39,450 40.8,446 Q42.5,450 40.8,454" fill="#ffd060" opacity="0.8"/>
+  <path d="M40.8,452 Q39.8,450 40.8,447.5 Q41.8,450 40.8,452" fill="#fff0a0" opacity="0.7"/>
+  <!-- DECORATION_FLOOR_5_END -->
+
+  <!-- DECORATION_FLOOR_6_START -->
+  <!-- ========== GLOWING EYES (Dungeon, Floor 6, window at x=213) ========== -->
+  <!-- Eerie eyes peering from the darkness of the center dungeon window -->
+  <!-- Window center: x=213+7=220, window recess y=521..549, dark interior -->
+  <!-- Eye glow (outer) -->
+  <ellipse cx="217" cy="538" rx="4" ry="3.5" fill="#a0e020" opacity="0.08"/>
+  <ellipse cx="223" cy="538" rx="4" ry="3.5" fill="#a0e020" opacity="0.08"/>
+  <!-- Left eye -->
+  <ellipse cx="217" cy="538" rx="2.2" ry="1.4" fill="#80c020" opacity="0.7"/>
+  <ellipse cx="217" cy="538" rx="1.2" ry="1.0" fill="#c0f040" opacity="0.8"/>
+  <ellipse cx="217" cy="538" rx="0.5" ry="0.7" fill="#1a1a10" opacity="0.9"/>
+  <!-- Right eye -->
+  <ellipse cx="223" cy="538" rx="2.2" ry="1.4" fill="#80c020" opacity="0.7"/>
+  <ellipse cx="223" cy="538" rx="1.2" ry="1.0" fill="#c0f040" opacity="0.8"/>
+  <ellipse cx="223" cy="538" rx="0.5" ry="0.7" fill="#1a1a10" opacity="0.9"/>
+  <!-- Faint glow cast on surrounding stone -->
+  <ellipse cx="220" cy="538" rx="12" ry="8" fill="#80c020" opacity="0.04"/>
+  <!-- DECORATION_FLOOR_6_END -->
+
+  <!-- ATMOSPHERE_OVERLAY_PLACEHOLDER -->
+</svg>

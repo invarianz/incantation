@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "concept_id": "arrays-lists",
+  "exercises": [
+    {
+      "id": "vala-mc-005",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 2,
+      "prompt": "How do you access the second element of this array?",
+      "code_snippet": "string[] spells = { \"Fire\", \"Ice\", \"Lightning\" };",
+      "explanation": "Arrays in Vala are zero-indexed, so the second element is at index 1.",
+      "concepts": ["arrays-lists"],
+      "misconceptions": ["one-based-indexing"],
+      "hints": ["Remember: arrays start counting from 0."],
+      "ap_base": 10,
+      "options": [
+        { "id": "o5a", "text": "spells[1]", "is_correct": true, "feedback": "Correct! Index 0 is \"Fire\", index 1 is \"Ice\".", "misconception_id": null },
+        { "id": "o5b", "text": "spells[2]", "is_correct": false, "feedback": "Not quite! That gives \"Lightning\" (the third element). Arrays are zero-indexed.", "misconception_id": "one-based-indexing" },
+        { "id": "o5c", "text": "spells(1)", "is_correct": false, "feedback": "Almost! Vala uses square brackets `[]` for array access, not parentheses.", "misconception_id": null },
+        { "id": "o5d", "text": "spells.get(1)", "is_correct": false, "feedback": "Not quite! Plain arrays use `[]` syntax. `.get()` is for collections like GenericArray.", "misconception_id": null }
+      ]
+    }
+  ]
+}

@@ -70,3 +70,6 @@ foreach size : icon_sizes
         rename: app_id + '.svg',
     )
 endforeach
+
+# Content packs
+install_subdir('content', install_dir: get_option('datadir') / meson.project_name())

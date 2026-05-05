@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "concept_id": "compound-types",
+  "exercises": [
+    {
+      "id": "vala-mc-008",
+      "exercise_type": "IDENTIFY_SIGIL",
+      "circle": "FIRST",
+      "difficulty": 2,
+      "prompt": "What does the `?` mean in this type declaration?",
+      "code_snippet": "string? enchantment = null;",
+      "explanation": "The `?` suffix marks a type as nullable \u2014 the variable can hold `null` in addition to normal values.",
+      "concepts": ["compound-types"],
+      "misconceptions": ["confuse-optional-ternary"],
+      "hints": ["Think about what special value this variable can hold."],
+      "ap_base": 10,
+      "options": [
+        { "id": "o8a", "text": "The variable can be null", "is_correct": true, "feedback": "Correct! The `?` makes the type nullable, allowing null as a valid value.", "misconception_id": null },
+        { "id": "o8b", "text": "The variable is a boolean", "is_correct": false, "feedback": "Not quite! The `?` modifies the type to be nullable \u2014 it doesn't change the base type.", "misconception_id": null },
+        { "id": "o8c", "text": "The variable is optional and can be omitted", "is_correct": false, "feedback": "Almost! Nullable means it can hold null, but the variable itself still exists.", "misconception_id": "confuse-optional-ternary" },
+        { "id": "o8d", "text": "It's a ternary operator", "is_correct": false, "feedback": "Not quite! The ternary operator is `condition ? a : b`. Here `?` is part of the type.", "misconception_id": null }
+      ]
+    }
+  ]
+}

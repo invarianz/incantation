@@ -33,3 +33,131 @@
     font-size: 28px;
     font-weight: bold;
 }
+
+/* Exercise */
+
+.exercise-prompt {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.code-snippet {
+    font-family: monospace;
+    background-color: alpha(@fg_color, 0.05);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.option-button {
+    padding: 12px 16px;
+    border-radius: 6px;
+    border: 1px solid alpha(@fg_color, 0.15);
+}
+
+.option-correct {
+    background-color: alpha(#2ecc71, 0.2);
+    border-color: #2ecc71;
+    color: @fg_color;
+}
+
+.option-wrong {
+    background-color: alpha(#e74c3c, 0.2);
+    border-color: #e74c3c;
+    color: @fg_color;
+}
+
+.feedback-label {
+    font-style: italic;
+    padding: 8px 0;
+}
+
+/* Spell Chain */
+
+.chain-display {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-weight: bold;
+}
+
+.chain-count {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.chain-bronze {
+    background-color: alpha(#cd7f32, 0.2);
+    color: #cd7f32;
+}
+
+.chain-silver {
+    background-color: alpha(#c0c0c0, 0.2);
+    color: #a0a0a0;
+}
+
+.chain-gold {
+    background-color: alpha(#ffd700, 0.2);
+    color: #daa520;
+}
+
+/* Concept Card */
+
+.concept-card {
+    min-width: 180px;
+}
+
+.concept-locked {
+    opacity: 0.5;
+}
+
+.concept-in-progress {
+    border: 2px solid @accent_color;
+}
+
+.concept-mastered {
+    border: 2px solid #2ecc71;
+}
+
+.circle-indicator {
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.prereq-label {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+/* Floor Buttons */
+
+.floor-button {
+    font-weight: 600;
+    font-size: 0.9em;
+    padding: 6px 16px;
+    min-height: 32px;
+}
+
+.floor-button:disabled {
+    opacity: 0.4;
+}
+
+/* Session Results */
+
+.session-results {
+    padding: 32px;
+}
+
+.results-score {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.results-ap {
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.results-chain {
+    font-size: 1.1em;
+}

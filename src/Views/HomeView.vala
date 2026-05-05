@@ -5,6 +5,7 @@
 
 public class Incantation.HomeView : Gtk.Box {
     public signal void navigate_to (string view_name);
+    public signal void start_session ();
 
     public Settings settings { get; construct; }
 
@@ -32,6 +33,9 @@ public class Incantation.HomeView : Gtk.Box {
         };
         continue_button.add_css_class (Granite.CssClass.SUGGESTED);
         continue_button.add_css_class ("continue-button");
+        continue_button.clicked.connect (() => {
+            start_session ();
+        });
 
         var stats_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
             homogeneous = true

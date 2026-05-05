@@ -7,6 +7,7 @@ public class Incantation.Concept : Object {
     public string id;
     public string name;
     public string domain;
+    public int floor = -1;  // -1 = not assigned to a floor
     public string[] prerequisites;
     public string[] confusion_pairs;
     public string[] misconceptions;

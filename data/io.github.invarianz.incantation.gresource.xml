@@ -3,5 +3,6 @@
   <gresource prefix="/io/github/invarianz/incantation">
     <file>styles/app.css</file>
     <file>images/magic-circle.svg</file>
+    <file>images/tower.svg</file>
   </gresource>
 </gresources>
